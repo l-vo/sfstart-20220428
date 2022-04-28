@@ -7,5 +7,6 @@ The easiest way to start the project is to use [docker](https://docs.docker.com/
 ```bash
 $ symfony new --webapp sfstart
 $ docker compose up -d
+$ yarn encore dev  # js/css entry points
 $ symfony serve -d
 ```
