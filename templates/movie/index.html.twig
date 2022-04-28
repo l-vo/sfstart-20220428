@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Movies{% endblock %}
+
+{% block body %}
+<ul class="nav">
+{% for id, data in movies %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_movie', {id}) }}">{{ data.0 }}</a>
+    </li>
+{% else %}
+    No movie available
+{% endfor %}
+</ul>
+
+{% if current is not null %}
+<ul>
+    <li><strong>title: </strong>{{ current.0 }}</li>
+    <li><strong>release date: </strong>{{ current.1|format_datetime('full', 'none') }}</li>
+    <li><strong>genre: </strong>{{ current.2 }}</li>
+</ul>
+{% endif %}
+{% endblock %}
