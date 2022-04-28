@@ -3,15 +3,24 @@
 {% block title %}Movies{% endblock %}
 
 {% block body %}
-<ul class="nav">
-{% for id, data in movies %}
-    <li class="nav-item">
-        <a class="nav-link" href="{{ path('app_movie', {id}) }}">{{ data.0 }}</a>
+<ul class="nav nav-tabs">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Movies</a>
+        <ul class="dropdown-menu">
+            {% for id, data in movies %}
+            <li class="dropdown-item">
+                <a class="nav-link" href="{{ path('app_movie', {id}) }}">{{ data.0 }}</a>
+            </li>
+            {% else %}
+                No movie available
+            {% endfor %}
+        </ul>
     </li>
-{% else %}
-    No movie available
-{% endfor %}
 </ul>
+
+<p>
+    <img src="{{ asset('build/images/movie.jpeg') }}" />
+</p>
 
 {% if current is not null %}
 <ul>
