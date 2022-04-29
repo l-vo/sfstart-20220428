@@ -7,9 +7,9 @@
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Movies</a>
         <ul class="dropdown-menu">
-            {% for id, data in movies %}
+            {% for movie in movies %}
             <li class="dropdown-item">
-                <a class="nav-link" href="{{ path('app_movie', {id}) }}">{{ data.0 }}</a>
+                <a class="nav-link" href="{{ path('app_movie', {id: movie.id}) }}">{{ movie.title }}</a>
             </li>
             {% else %}
                 No movie available
@@ -24,9 +24,11 @@
 
 {% if current is not null %}
 <ul>
-    <li><strong>title: </strong>{{ current.0 }}</li>
-    <li><strong>release date: </strong>{{ current.1|format_datetime('full', 'none') }}</li>
-    <li><strong>genre: </strong>{{ current.2 }}</li>
+    <li><strong>title: </strong>{{ current.title }}</li>
+    <li><strong>release date: </strong>{{ current.released|format_datetime('full', 'none') }}</li>
+    <li><strong>genre: </strong>{{ current.genre.name }}</li>
+    <li><strong>country: </strong>{{ current.country|country_name }}</li>
+    <li><strong>price: </strong>{{ current.price|format_currency('EUR') }}</li>
 </ul>
 {% endif %}
 {% endblock %}
