@@ -27,7 +27,7 @@
     <li><strong>title: </strong>{{ current.title }}</li>
     <li><strong>release date: </strong>{{ current.released|format_datetime('full', 'none') }}</li>
     <li><strong>genre: </strong>{{ current.genre.name }}</li>
-    <li><strong>country: </strong>{{ current.country|country_name }}</li>
+    <li><strong>country: </strong>{{ current.country|country_name() }}</li>
     <li><strong>price: </strong>{{ current.price|format_currency('EUR') }}</li>
 </ul>
 {% endif %}
